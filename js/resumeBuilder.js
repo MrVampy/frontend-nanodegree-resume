@@ -10,17 +10,19 @@ var bio = {
     "picture":"images/thomas.jpg",
     "welcome":"Hello and welcome to my resume.",
     "skills": [
-	"You name it and I can do it!","Loving the work","Making things automated"
+	"You name it and I can do it!","Loving the work","Making things automated","Yesh baby"
     ]
 }
 
-var work = {
+var work = [
+    {
     "dates":"February 2014",
     "description":"Doing various software developer tasks with an ERP system called Microsoft Dynamics NAV",
     "employer":"Logos Consult A/S",
     "location":"Alleroed, Nordsjaelland, Denmark",
     "title":"Software developer"
-}
+    }
+]
 
 
 var education = {
@@ -39,12 +41,20 @@ var project = {
 if(bio.skills.length > 0) {
     $("#header").append(HTMLskillsStart);
 
-    var formattedSkill = HTMLskills.replace("%data",bio.skills[0]);
+    var formattedSkill = HTMLskills.replace("%data%",bio.skills[0]);
     $("#skills").append(formattedSkill);
-    formattedSkill = HTMLskills.replace("%data",bio.skills[1]);
+    formattedSkill = HTMLskills.replace("%data%",bio.skills[1]);
     $("#skills").append(formattedSkill);
-    formattedSkill = HTMLskills.replace("%data",bio.skills[2]);
+    formattedSkill = HTMLskills.replace("%data%",bio.skills[2]);
     $("#skills").append(formattedSkill);
-    formattedSkill = HTMLskills.replace("%data",bio.skills[3]);
+    formattedSkill = HTMLskills.replace("%data%",bio.skills[3]);
     $("#skills").append(formattedSkill);
+}
+for (i in work) {
+    $("#workExperience").append(HTMLworkStart);
+
+    var formattedEmployer = HTMLworkEmployer.replace("%data%",work[i].employer);
+    var formattedTitle = HTMLworkTitle.replace("%data%",work[i].title);
+    var formattedEmployerTitle = formattedEmployer + formattedTitle;
+    $(".work-entry:last").append(formattedEmployerTitle);
 }
